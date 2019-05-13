@@ -1,10 +1,10 @@
 <?php
 require ('config.php');
 
-$email = $_REQUEST['email'];
-$nname = $_REQUEST['nname'];
-$npass = $_REQUEST['npass'];
-$otp = $_REQUEST['otp'];
+$email = clean($_REQUEST['email']);
+$nname = clean($_REQUEST['nname']);
+$npass = clean($_REQUEST['npass']);
+$otp = clean($_REQUEST['otp']);
 
 $lastOtp = array();
 $result = mysqli_query($conn, "select * from otp where email='$email' and `expire_at` < DATE_ADD(NOW(), INTERVAL '5:0' MINUTE_SECOND) order by id desc limit 1");

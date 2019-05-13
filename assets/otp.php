@@ -1,6 +1,6 @@
 <?php
 require ('config.php');
-$email = $_REQUEST['email'];
+$email = clean($_REQUEST['email']);
 
 
 $user = array();

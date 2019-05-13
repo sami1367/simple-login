@@ -1,7 +1,7 @@
 <?php
 require ('config.php');
-$email = $_REQUEST['email'];
-$pass = $_REQUEST['pass'];
+$email = clean($_REQUEST['email']);
+$pass = clean($_REQUEST['pass']);
 
 $result = mysqli_query($conn, "select * from users where email='$email' and pass='$pass' order by id desc limit 1");
 $user =  mysqli_fetch_assoc($result);

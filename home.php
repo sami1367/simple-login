@@ -11,8 +11,8 @@
 
 <?php
 session_start();
-$userEmail = $_SESSION['email'];
-$userToken = $_SESSION['token'];
+$userEmail = clean($_SESSION['email']);
+$userToken = clean($_SESSION['token']);
 $result = mysqli_query($conn, "select * from users where email='$userEmail' and token='$userToken' order by id desc limit 1");
 $user =  mysqli_fetch_assoc($result);
 if(!$user){
