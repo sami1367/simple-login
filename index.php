@@ -52,9 +52,9 @@ exit();
     <p style="color: red;" id="demo"></p>
     <div style="overflow:auto;">
         <div style="float:right;">
-            <button type="button" id="nextBtn" onclick="nextPrev(-1)">Login</button>
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Back</button>
             or
-            <button type="button" id="prevBtn" onclick="get_otp(email.value);">Register nowwwwwww</button>
+            <button type="button" id="nextBtn" onclick="get_otp(email.value);">Register nowwwwwww</button>
         </div>
     </div>
   </div>
