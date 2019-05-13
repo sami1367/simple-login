@@ -63,6 +63,7 @@ exit();
     <p>insert verification code :</p>
     <p><input placeholder="******" name="code" required></p>
     <p>code sent to : <b style="color: green;" id="emailval"></b></p>
+    <p style="color: #ffd700;" id="demo5"></p>
     <p style="color: red;" id="demo2"></p>
     <div style="overflow:auto;">
         <div style="float:right;">

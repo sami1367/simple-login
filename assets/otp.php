@@ -4,37 +4,58 @@ $email = $_REQUEST['email'];
 
 
 $user = array();
-
 $result = mysqli_query($conn, "select * from users where email='$email' order by id desc limit 1");
 while ($row = mysqli_fetch_array($result)) {
     array_push($user, $row);
 }
 if(count ($user) > 0){
-    print "you had";
+    $response = [
+        'success'=>false,
+        'err'=>"you had"
+    ];
 }else{
-    checkLastOtp($conn,$email);
+    $response = checkLastOtp($conn,$email);
 }
 
 function checkLastOtp($conn,$email){
+    $response = "1";
+
     $lastOtp = array();
     $result = mysqli_query($conn, "select * from otp where email='$email' and `expire_at` > NOW() order by id desc limit 1");
     while ($row = mysqli_fetch_array($result)) {
         array_push($lastOtp, $row);
     }
     if($lastOtp[0]['fail']>=3 ){
-        print "after";
+        $response = [
+            'success'=>false,
+            'err'=>"after"
+        ];
     }else if($lastOtp[0]){
-        print "yes";
+        $response = [
+            'success'=>true,
+            'otp'=>$lastOtp[0]['code']
+        ];
     }else{
         $code = generateRandomString();
         $res = mysqli_query($conn, "insert into otp set email='$email',code='$code',expire_at=DATE_ADD(NOW(), INTERVAL '5:0' MINUTE_SECOND)");
         if ($res != "") {
-            print "yes";
+            $response = [
+                'success'=>true,
+                'otp'=>$code
+            ];
         } else {
-            print "no";
+            $response = [
+                'success'=>false,
+                'err'=>"no"
+            ];
         }
     }
+    return $response;
 }
+
+
+header('Content-Type: application/json');
+echo json_encode($response);
 
 function generateRandomString() {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

@@ -79,18 +79,24 @@ function get_otp(email) {
                   email: email,
               }
               }).done(function(msg) {
-                  console.log(msg)
-                  if (msg == 'yes') {
-                    nextPrev(1) ;
-                    countDown();
-                    document.getElementById("emailval").innerHTML = email;
-                  }else if(msg == 'no'){
-                    document.getElementById("demo").innerHTML = "error";
-                  }else if(msg == 'after'){
-                    document.getElementById("demo").innerHTML = "try after 5 minute";
-                  }else{
-                    document.getElementById("demo").innerHTML = "server error";
-                  }
+                console.log(msg)
+                if (msg.success==true) {
+                  nextPrev(1) ;
+                  countDown();
+                  document.getElementById("emailval").innerHTML = email;
+                  document.getElementById("demo5").innerHTML = "otp code is : "+msg.otp;
+                }else{
+                  switch(msg.err) {
+                    case 'no':
+                      document.getElementById("demo").innerHTML = "error";
+                      break;
+                    case 'after':
+                      document.getElementById("demo").innerHTML = "try after 5 minute";
+                      break;
+                    default:
+                      document.getElementById("demo").innerHTML = "server error";
+                    } 
+                }
             });
   } 
 }
