@@ -23,11 +23,12 @@
   <div class="tab">
     <h1>Login or Register</h1>
     <p>Login:</p>
-    <p><input placeholder="Username..." name="uname"></p>
-    <p><input placeholder="Password..." name="pword" type="password"></p>
+    <p><input placeholder="Email" name="oEmail" type="email"></p>
+    <p><input placeholder="Password..." name="oPass" type="password"></p>
+    <p style="color: red;" id="demo3"></p>
     <div style="overflow:auto;">
         <div style="float:right;">
-            <button type="button" id="nextBtn" onclick="">Login</button>
+            <button type="button" id="nextBtn" onclick="login(oEmail.value,oPass.value);">Login</button>
             or
             <button type="button" id="prevBtn" onclick="nextPrev(1)">Register now</button>
         </div>

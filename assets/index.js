@@ -130,10 +130,30 @@ function create(email,otp,nname,npass) {
     }
     }).done(function(msg) {
         if (msg.success==true) {
-          //nextPrev(1) ;
           window.location.href = "home.php";
         }else{
           console.log("error code is : ",msg.errore_code);
+        }
+  });
+  
+}
+
+function login(email,pass) {
+  console.log("llllogiiin")
+  $.ajax({
+    type: "POST",
+    url: "assets/login.php",
+    data: {
+      email: email,
+      pass: pass,
+    }
+    }).done(function(msg) {
+      console.log("ffff")
+      console.log(msg)
+        if (msg.success==true) {
+          window.location.href = "home.php";
+        }else{
+          document.getElementById("demo3").innerHTML = "invalin username or password";
         }
   });
   
