@@ -1,4 +1,15 @@
 <?php require_once 'assets/config.php' ?>
+<?php
+session_start();
+$userEmail = $_SESSION['email'];
+$userToken = $_SESSION['token'];
+$result = mysqli_query($conn, "select * from users where email='$userEmail' and token='$userToken' order by id desc limit 1");
+$user =  mysqli_fetch_assoc($result);
+if($user){
+    header("Location: home.php");
+exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
