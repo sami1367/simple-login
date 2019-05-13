@@ -18,10 +18,10 @@
 </head>
 <body>
 
-<form id="regForm" action="/action_page.php">
-  <h1>Login or Register</h1>
+<form id="regForm" action="/home.php" method="post">
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
+    <h1>Login or Register</h1>
     <p>Login:</p>
     <p><input placeholder="Username..." name="uname"></p>
     <p><input placeholder="Password..." name="pword" type="password"></p>
@@ -34,6 +34,7 @@
     </div>
   </div>
   <div class="tab">
+    <h1>Email</h1>
     <p>insert your email address :</p>
     <p><input type="email" placeholder="example@example.com" name="email" required></p>
     <p style="color: red;" id="demo"></p>
@@ -46,6 +47,7 @@
     </div>
   </div>
   <div class="tab">
+    <h1>Code</h1>
     <p>insert verification code :</p>
     <p><input placeholder="******" name="code" required></p>
     <p>code sent to : <b style="color: green;" id="emailval"></b></p>
@@ -59,12 +61,13 @@
     </div>
   </div>
   <div class="tab">
-    <p>Login:</p>
-    <p><input placeholder="Username..." name="uname"></p>
-    <p><input placeholder="Password..." name="pword" type="password"></p>
+    <h1>Register</h1>
+    <p>please insert your name and your new password</p>
+    <p><input placeholder="name" name="nname"></p>
+    <p><input placeholder="new password" name="npass" type="password"></p>
     <div style="overflow:auto;">
         <div style="float:right;">
-            <button type="button" id="prevBtn" onclick="nextPrev(1)">Register now</button>
+            <button type="button" id="prevBtn" onclick="create(email.value,code.value,nname.value,npass.value);">Register now</button>
         </div>
     </div>
   </div>
@@ -76,8 +79,6 @@
     <span class="step"></span>
   </div>
 </form>
-
-
 
 </body>
 <!-- our JavaScript -->

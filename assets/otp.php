@@ -1,5 +1,5 @@
 <?php
-require ('assets/config.php');
+require ('config.php');
 $email = $_REQUEST['email'];
 
 

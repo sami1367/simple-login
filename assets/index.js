@@ -74,7 +74,7 @@ function get_otp(email) {
   } else {
            $.ajax({
               type: "POST",
-              url: "otp.php",
+              url: "assets/otp.php",
               data: {
                   email: email,
               }
@@ -98,7 +98,7 @@ function get_otp(email) {
 function check_otp(email,otp) {
   $.ajax({
     type: "POST",
-    url: "checkotp.php",
+    url: "assets/checkotp.php",
     data: {
       email: email,
       otp: otp,
@@ -113,6 +113,27 @@ function check_otp(email,otp) {
           document.getElementById("demo2").innerHTML = "try after 5 minute";
         }else{
           document.getElementById("demo2").innerHTML = "server error";
+        }
+  });
+  
+}
+
+function create(email,otp,nname,npass) {
+  $.ajax({
+    type: "POST",
+    url: "assets/create.php",
+    data: {
+      email: email,
+      otp: otp,
+      nname: nname,
+      npass: npass,
+    }
+    }).done(function(msg) {
+        if (msg.success==true) {
+          //nextPrev(1) ;
+          window.location.href = "home.php";
+        }else{
+          console.log("error code is : ",msg.errore_code);
         }
   });
   

@@ -1,5 +1,5 @@
 <?php
-require ('assets/config.php');
+require ('config.php');
 $otp = $_REQUEST['otp'];
 $email = $_REQUEST['email'];
 $lastOtp = array();
